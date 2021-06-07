@@ -2,15 +2,11 @@ const bc = new BroadcastChannel('channel');
 
 function sendMessage(event) {
     event.preventDefault();
-    // var message = document.getElementById('message');
+    var bodymessage = document.getElementById('bodymessage');
+    var footermessage = document.getElementById('footermessage');
     var message = {
-        secret: 'mensagem secreta',
-        test: 1
+        bodymessage: bodymessage.value,
+        footermessage: footermessage.value
     }
     bc.postMessage(message);
-}
-
-bc.onmessage = function (ev) { 
-    var message = document.getElementById('messageReceived');    
-    message.innerHTML += `<div>${ev.data.secret}</div>`;
 }
